@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkbox Example</title>
+  </head>
+  <body>
+    <form name="form1">
+      <input type="button" name="checkAll" value="Check All" id="checkAllBtn" />
+      <input type="button" name="uncheckAll" value="Uncheck All" id="uncheckAllBtn" style="display: none" />
+      <br />
+
+      <input type="checkbox" name="buah" class="buah" />Manggis <br />
+      <input type="checkbox" name="buah" class="buah" />Apel <br />
+      <input type="checkbox" name="buah" class="buah" />Jeruk <br />
+      <input type="checkbox" name="buah" class="buah" />Pear <br />
+      <input type="checkbox" name="buah" class="buah" />Anggur
+    </form>
+
+    <script>
+      function checkAll() {
+        const checkboxes = document.querySelectorAll('input[name="buah"]');
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = true;
+        });
+        toggleButtons();
+      }
+
+      function uncheckAll() {
+        const checkboxes = document.querySelectorAll('input[name="buah"]');
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = false;
+        });
+        toggleButtons();
+      }
+
+      function toggleButtons() {
+        const checkboxes = document.querySelectorAll('input[name="buah"]');
+        const checkAllBtn = document.getElementById('checkAllBtn');
+        const uncheckAllBtn = document.getElementById('uncheckAllBtn');
+
+        const allChecked = Array.from(checkboxes).every((checkbox) => checkbox.checked);
+        const allUnchecked = Array.from(checkboxes).every((checkbox) => !checkbox.checked);
+
+        if (allChecked) {
+          checkAllBtn.style.display = 'none';
+          uncheckAllBtn.style.display = 'inline';
+        } else if (allUnchecked) {
+          checkAllBtn.style.display = 'inline';
+          uncheckAllBtn.style.display = 'none';
+        } else {
+          checkAllBtn.style.display = 'none';
+          uncheckAllBtn.style.display = 'none';
+        }
+      }
+
+      document.getElementById('checkAllBtn').addEventListener('click', checkAll);
+      document.getElementById('uncheckAllBtn').addEventListener('click', uncheckAll);
+
+      toggleButtons();
+    </script>
+  </body>
+</html>

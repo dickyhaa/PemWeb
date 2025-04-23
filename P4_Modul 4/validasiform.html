@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" name="validasi" onsubmit="return validasiForm()">
+      <label for="nama">Nama:</label>
+      <input type="text" name="nama" id="nama" /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" /><br />
+
+      <label for="alamat">Alamat:</label>
+      <textarea name="alamat" id="alamat"></textarea><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script lang="javascript">
+      function validasiForm() {
+        let missingFields = [];
+        if (document.forms["validasi"]["nama"].value == "") {
+          missingFields.push("Nama");
+        }
+        if (document.forms["validasi"]["email"].value == "") {
+          missingFields.push("Email");
+        }
+        if (document.forms["validasi"]["alamat"].value == "") {
+          missingFields.push("Alamat");
+        }
+
+        if (missingFields.length > 0) {
+          alert("Kolom yang kosong: " + missingFields.join(", "));
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>
