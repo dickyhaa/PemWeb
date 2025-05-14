@@ -1,6 +1,6 @@
 <?php
 
-$nama = "Masukkan nama anda";
+$nama = "Dicky Haikal Aly";
 
 // Fungsi tanpa reference (pass by value)
 function bkn_reference($nama)
